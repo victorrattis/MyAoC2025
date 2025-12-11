@@ -5,8 +5,6 @@ import java.net.URL
 private const val DIAL_RANGE = 100
 private const val INITIAL_DIAL = 0
 
-fun String.splitInLines(): List<String> = this.split(System.lineSeparator())
-
 class PuzzleDay01 {
     fun execute(file: URL, isPart2: Boolean = false): String {
         return if (!isPart2) executePart1(file) else executePart2(file)
@@ -43,5 +41,7 @@ class PuzzleDay01 {
             nextDial to nextCount
         }.second.toString()
 
-        private data class Step(val side: Int, val rotate: Int)
+    private fun String.splitInLines(): List<String> = this.split(System.lineSeparator())
+
+    private data class Step(val side: Int, val rotate: Int)
     }

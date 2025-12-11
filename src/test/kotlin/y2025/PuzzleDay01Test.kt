@@ -3,9 +3,8 @@ package y2025
 import com.vhra.aoc.y2025.PuzzleDay01
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import y2025.TestUtils.getResource
 import java.net.URL
-
-fun getResource(resPath: String): URL = {}.javaClass.getResource(resPath)!!
 
 class PuzzleDay01Test {
     @Test

@@ -3,6 +3,7 @@ package y2025
 import com.vhra.aoc.y2025.PuzzleDay02
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import y2025.TestUtils.getResource
 
 class PuzzleDay02Test {
     @Test

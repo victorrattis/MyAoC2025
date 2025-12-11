@@ -33,36 +33,8 @@ class PuzzleDay02 {
         return sum
     }
 
-    /*
-     * invalid IDs is made only of some sequence of digits repeated twice
-     * */
-    private fun isInvalidTwiceId(id: String): Boolean {
-        // None of the numbers have leading zeroes;
-        if ((id.length % 2) == 0) {
-            val middle = id.length / 2
-            var s1 = 0
-            var s2 = middle
-            while (s1 < middle && s2 < id.length) {
-                if (id[s1] != id[s2]) return false
-                s1++
-                s2++
-            }
-            return true
-        }
-        return false
-    }
-
-    private fun allSame(number: String, index: Int, size: Int, n: Int): Boolean {
-        val first = number[index]
-        for (i in 1 until n) {
-            if (first != number[index + (i * size)]) return false
-        }
-        return true
-    }
-
     private fun isInvalidId(number: String, divisions: Int = number.length): Boolean {
         var isValid = false
-        // None of the numbers have leading zeroes;
         for (i in 2..divisions) {
             if ((number.length % i) == 0) {
                 val size = number.length / i
@@ -77,5 +49,13 @@ class PuzzleDay02 {
             }
         }
         return isValid
+    }
+
+    private fun allSame(number: String, index: Int, size: Int, n: Int): Boolean {
+        val first = number[index]
+        for (i in 1 until n) {
+            if (first != number[index + (i * size)]) return false
+        }
+        return true
     }
 }
