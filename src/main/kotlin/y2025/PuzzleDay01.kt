@@ -5,13 +5,15 @@ import java.net.URL
 private const val DIAL_RANGE = 100
 private const val INITIAL_DIAL = 0
 
+fun String.splitInLines(): List<String> = this.split(System.lineSeparator())
+
 class PuzzleDay01 {
     fun execute(file: URL, isPart2: Boolean = false): String {
         return if (!isPart2) executePart1(file) else executePart2(file)
     }
 
     private fun executePart1(file: URL): String = file.readText()
-        .split(System.lineSeparator())
+        .splitInLines()
         .map { it.first() to it.drop(1).toInt() }
         .map { Step(if (it.first == 'L') -1 else 1, it.second) }
         .fold(50 to 0) { acc, step ->
@@ -22,7 +24,7 @@ class PuzzleDay01 {
         }.second.toString()
 
     private fun executePart2(file: URL): String = file.readText()
-        .split(System.lineSeparator())
+        .splitInLines()
         .map { it.first() to it.drop(1).toInt() }
         .map { Step(if (it.first == 'L') -1 else 1, it.second) }
         .map { (side, rotate) -> (rotate / DIAL_RANGE) to Step(side, rotate % DIAL_RANGE) } // normalize and compute the rotation
