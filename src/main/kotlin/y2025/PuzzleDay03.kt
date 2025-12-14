@@ -1,34 +1,31 @@
 package com.vhra.aoc.y2025
 
-import java.net.URL
+import java.math.BigInteger
 
-class PuzzleDay03 {
-    fun execute(file: URL, isPart2: Boolean = false): String {
-        return file.readText()
+class PuzzleDay03: PuzzleExecutor() {
+    override fun executeInput(file: String, isPart2: Boolean): String {
+        return file
             .split(System.lineSeparator())
-            .sumOf { getLargestJoltage(it) }.toString()
+            .sumOf { getLargestJoltage(it, if (!isPart2) 2 else 12 ) }.toString()
     }
 
-    private fun getLargestJoltage(line: String): Int {
-        var first = line[0]
-        var second = '0'
-        var index = 0
+    private fun getLargestJoltage(line: String, digits: Int): BigInteger {
+        val result = CharArray(digits)
+        var largestDigital = '0'
+        var largestIndex = 0
 
-        for (i in 1 until line.length - 1) {
-            if (first < line[i]) {
-                first = line[i]
-                index = i
-                if (first == '9') break
+        for (i in 0 until digits) {
+            for (x in (largestIndex) until line.length - (digits - 1 - i)) {
+                if (largestDigital < line[x]) {
+                    largestDigital = line[x]
+                    largestIndex = x
+                    if (largestDigital == '9') break
+                }
             }
+            result[i] = largestDigital
+            largestDigital = '0'
+            largestIndex++
         }
-
-        for (i in index + 1 until line.length) {
-            if (second < line[i]) {
-                second = line[i]
-                if (second == '9') break
-            }
-        }
-
-        return first.digitToInt() * 10 + second.digitToInt()
+        return result.joinToString("").toBigInteger()
      }
 }

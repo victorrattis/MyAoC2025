@@ -1,4 +1,4 @@
-package y2025
+package com.vhra.aoc.y2025
 
 import java.net.URL
 
