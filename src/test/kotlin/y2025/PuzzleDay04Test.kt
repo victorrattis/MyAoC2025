@@ -17,4 +17,16 @@ class PuzzleDay04Test {
         val result = PuzzleDay04().execute(getResource("/y2025/day04-input01.txt"))
         assertEquals("1393", result)
     }
+
+    @Test
+    fun testSample01Part2() {
+        val result = PuzzleDay04().execute(getResource("/y2025/day04-sample01.txt"), isPart2 = true)
+        assertEquals("43", result)
+    }
+
+    @Test
+    fun testSInput01Part2() {
+        val result = PuzzleDay04().execute(getResource("/y2025/day04-input01.txt"), isPart2 = true)
+        assertEquals("8643", result)
+    }
 }

@@ -44,4 +44,4 @@ class PuzzleDay01 {
     private fun String.splitInLines(): List<String> = this.split(System.lineSeparator())
 
     private data class Step(val side: Int, val rotate: Int)
-    }
+}
